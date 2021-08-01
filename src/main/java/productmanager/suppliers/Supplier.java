@@ -3,8 +3,10 @@ package productmanager.suppliers;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import productmanager.products.Product;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -25,6 +27,9 @@ public class Supplier {
 
     @Enumerated(EnumType.STRING)
     private Currency currency;
+
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE},orphanRemoval = true, mappedBy = "supplier")
+    private List<Product> products;
 
     public Supplier(String name, String country, String address, Currency currency) {
         this.name = name;

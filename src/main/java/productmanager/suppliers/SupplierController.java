@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import productmanager.products.ProductDto;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -52,5 +53,12 @@ public class SupplierController {
     @ApiResponse(responseCode = "404", description = "Supplier not found")
     public void deleteSupplier(@PathVariable("id") long id) {
         service.deleteSupplier(id);
+    }
+
+    @GetMapping("/{id}/products")
+    @Operation(summary = "gives back all products for a single supplier")
+    @ApiResponse(responseCode = "404", description = "Supplier not found")
+    public List<ProductDto> listAllProducts(@PathVariable ("id") long id){
+        return service.listAllProducts(id);
     }
 }
