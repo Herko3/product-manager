@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  productmanager-mariadb:
+    image: mariadb
+    restart: always
+    ports:
+      - '3307:3306'
+    environment:
+      MYSQL_DATABASE: productmanager
+      MYSQL_USER: productmanager
+      MYSQL_PASSWORD: productmanager
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+
+  productmanager-app:
+    image: productmanager
+    restart: always
+    ports:
+      - '8080:8080'
+    depends_on:
+      - productmanager-mariadb
+    environment:
+      SPRING_DATASOURCE_URL: 'jdbc:mariadb://productmanager-mariadb/productmanager'
+    entrypoint: ['./wait-for-it.sh', '-t', '120','productmanager-mariadb:3306','--','java','org.springframework.boot.loader.JarLauncher']
