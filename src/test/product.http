@@ -1,0 +1,58 @@
+###
+GET http://localhost:8080/api/products
+Accept: application/json
+
+###
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "articleNumber": "28502",
+  "name": "Montessori",
+  "description": "20cm torony",
+  "type": "WOODEN_TOY",
+  "netPrice": 1250,
+  "grossPrice": 2990,
+  "supplierId": 1
+}
+
+###invalid
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "articleNumber": "",
+  "name": "",
+  "description": "",
+  "type": null,
+  "netPrice": null,
+  "grossPrice": null,
+  "supplierId": null
+}
+
+###invalid
+PUT http://localhost:8080/api/products/2
+Content-Type: application/json
+
+{
+  "articleNumber": "28502"
+}
+
+###
+GET http://localhost:8080/api/suppliers/1/products
+Accept: application/json
+
+###
+DELETE http://localhost:8080/api/products/1
+Accept: application/json
+
+###
+PUT http://localhost:8080/api/products/2
+Content-Type: application/json
+
+{
+  "articleNumber": "28503",
+  "name": "random book",
+  "description": "454 oldalas",
+  "type": "BOOK"
+}

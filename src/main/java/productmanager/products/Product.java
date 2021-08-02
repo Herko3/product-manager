@@ -72,7 +72,7 @@ public class Product {
         }
 
         if(command.getGrossPrice() != null){
-            setNetPrice(command.getGrossPrice());
+            setGrossPrice(command.getGrossPrice());
         }
     }
 

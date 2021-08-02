@@ -16,4 +16,5 @@ public class ProductDto {
     private ProductType type;
     private long netPrice;
     private long grossPrice;
+    private SupplierForProductDto supplier;
 }

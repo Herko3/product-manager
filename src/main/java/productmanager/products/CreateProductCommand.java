@@ -1,5 +1,6 @@
 package productmanager.products;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +25,7 @@ public class CreateProductCommand {
     @Schema(description = "the name of the product", example = "Montessori torony")
     private String name;
 
+    @JsonProperty
     @Size(max = 255)
     @Schema(description = "the description of the product", example = "20x20x20 cm")
     private String description;

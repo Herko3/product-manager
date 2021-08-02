@@ -7,6 +7,7 @@ import productmanager.products.ProductDto;
 import productmanager.products.ProductRepository;
 
 import javax.transaction.Transactional;
+import java.net.URI;
 import java.util.List;
 
 @Service
@@ -29,7 +30,7 @@ public class SupplierService {
     }
 
     private Supplier getSupplierById(long id) {
-        return repository.findById(id).orElseThrow(() -> new SupplierNotFoundException(id));
+        return repository.findById(id).orElseThrow(() -> new NotFoundException(URI.create("supplier/not-found"), "Supplier not found with id: " + id));
     }
 
     public SupplierDto createSupplier(CreateSupplierCommand command) {
