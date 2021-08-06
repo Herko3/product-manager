@@ -1,0 +1,40 @@
+###
+GET http://localhost:8080/api/tenders
+Accept: application/json
+
+###
+POST http://localhost:8080/api/tenders
+Content-Type: application/json
+
+{
+  "name": "Random city",
+  "quotationDate": "2020-12-10",
+  "articleNumbers": ["69085","58454","45048"]
+}
+
+###
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "articleNumber": "45048",
+  "name": "Montessori 3",
+  "description": "20cm torony",
+  "type": "WOODEN_TOY",
+  "netPrice": 1250,
+  "grossPrice": 2990,
+  "supplierId": 1
+}
+###
+GET http://localhost:8080/api/tenders/1
+Accept: application/json
+
+###
+PUT http://localhost:8080/api/tenders/2
+Content-Type: application/json
+
+{
+  "name": "Tender 505",
+  "quotationDate": "2020-12-15",
+  "articleNumbers": ["69085","45048"]
+}

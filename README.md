@@ -1,8 +1,13 @@
 #Product Manager Application
 
+### Program
+A program lényege a termékek kezelése, melyek nem állhatnak magukban, csak beszállítóval együtt. A termékek lekérdezése történhet az összes termék, név alapján szűrve, csak 1 termék vagy egy beszállító összes terméke.
+Továbbá a program tenderek kezelésére is alkalmas. A tenderhez szükség van a termékekre is.
+
 ### Entitások:
 * Supplier
 * Product
+* Tender
 
 ### Supplier
 Attribútumai:
@@ -12,19 +17,15 @@ Attribútumai:
 * Pénznem (kötelező, enum): a beszállító számlájának pénzneme
 * Termékek (kapcsolat a Product entitásra): 1 beszállítóhoz több termék is lehet
 
-Lekérdezések:
-* összes beszállító
-* 1 beszállító
-* 1 beszállító összes terméke
+A következő végpontokon érjük el az entitást
 
-Létrehozások:
-* beszállító létrehozása
-
-Frissítés:
-* beszállító adatainak (kivéve termékek) frissítés
-
-Törlés:
-* beszállító törlése, ezáltal az összes hozzá tartozó temrmék is törlődik
+| Http metódus | Vég pont               | Leírás                           |
+| ------------ | -------------------    | -------------------------------- |
+| GET          | `"api/suppliers"`      | lekérdezi az összes beszállítót     |
+| GET          | `"api/suppliers/{id}"` | lekérdez egy beszállítót id alapján |
+| POST         | `"api/suppliers"`      | létrehoz egy beszállítót            |
+| PUT          | `"api/suppliers/{id}"` | módosít egy beszállítót id alapján  |
+| DELETE       | `"api/suppliers/{id}"` | töröl egy beszállítót id alapján    |
 
 ### Product
 Attribútumai:
@@ -35,16 +36,24 @@ Attribútumai:
 * Bruttó ár (kötelező): bruttó ára
 * Tipus (kötelező, enum): típusa a terméknek
 
-Lekérdezések:
-* Összes termék lekérdezése (opcionális szűrés név részletre)
-* 1 termék lekérdezése
+| Http metódus | Vég pont               | Leírás                           |
+| ------------ | -------------------    | -------------------------------- |
+| GET          | `"api/products"`      | lekérdezi az összes terméket     |
+| GET          | `"api/products/{id}"` | lekérdez egy terméket id alapján |
+| POST         | `"api/products"`      | létrehoz egy terméket            |
+| PUT          | `"api/products/{id}"` | módosít egy terméket id alapján  |
+| DELETE       | `"api/products/{id}"` | töröl egy terméket id alapján    |
 
-Frissítés:
-* A termék összes adatának frissítése
+### Tender
+Attribútumai:
+* Név (kötelező, max 255 karakter): a tender neve
+* Árajánlat dátuma (kötelező, csak múlt vagy jövő): amikor az árajánlat elkészült
+* termékek listája (nem lehet üres): az árajánlatban szereplő termékek
 
-Törlés:
-* 1 termék törlése
-
-
-### Program
-A program lényege a termékek kezelése, melyek nem állhatnak magukban, csak beszállítóval együtt. A termékek lekérdezése történhet az összes termék, név alapján szűrve, csak 1 termék vagy egy beszállító összes terméke. 
+| Http metódus | Vég pont               | Leírás                           |
+| ------------ | -------------------    | -------------------------------- |
+| GET          | `"api/tenders"`      | lekérdezi az összes tendert     |
+| GET          | `"api/tenders/{id}"` | lekérdez egy tendert id alapján |
+| POST         | `"api/tenders"`      | létrehoz egy tendert            |
+| PUT          | `"api/tenders/{id}"` | módosít egy tendert id alapján  |
+| DELETE       | `"api/tenders/{id}"` | töröl egy tendert id alapján    |

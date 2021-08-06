@@ -10,4 +10,6 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     List<Product> findAllByNameContains(String part);
     List<Product> findAllBySupplier_Id(long id);
     Optional<Product> findByArticleNumber(String articleNumber);
+
+    List<Product> findAllByArticleNumberIn(List<String> articleNumbers);
 }
