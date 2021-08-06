@@ -7,5 +7,6 @@ create table products(
     type varchar(25) not null,
     net_price bigint not null,
     gross_price bigint not null,
-    primary key (id)
+    primary key (id),
+    foreign key (supplier_id) references suppliers(id) on delete cascade
 )
