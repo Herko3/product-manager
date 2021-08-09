@@ -21,7 +21,7 @@ public class ProductController {
 
     @GetMapping
     @Operation(summary = "gives back all products, optionally can be filtered in a query with namePart")
-    public List<ProductDto> listAllProducts(Optional<String> namePart) {
+    public List<ProductDto> listAllProducts(@RequestParam Optional<String> namePart) {
         return service.listAllProducts(namePart);
     }
 
