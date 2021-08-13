@@ -25,7 +25,7 @@ public class Product {
 
     private String description;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private ProductType type;
 
     @Column(name = "net_price")
